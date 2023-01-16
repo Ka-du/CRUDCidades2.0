@@ -11,12 +11,25 @@ import java.util.*;
 
 public class CidadeArmazenamentoVolatilController implements CidadeController{
 
-        private Map<UUID, Cidade> pessoas = new HashMap<>();
+        private Map<UUID, Cidade> cidades = new HashMap<>();
 
         @Override
         public void cadastrar(Cidade cidade) {
             cidade.setId(UUID.randomUUID());
-            pessoas.put(cidade.getId(), cidade);
+            cidades.put(cidade.getId(), cidade);
         }
+
+    @Override
+    public Cidade listarCidades(UUID id) {
+        Cidade encontrada = cidades.get(id);
+        return encontrada;
+    }
+
+    @Override
+    public List<Cidade> listar() {
+
+        return new ArrayList<>(cidades.values());
+    }
+
 
 }

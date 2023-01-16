@@ -5,7 +5,9 @@ import br.com.ada.crud.cidade.Model.Cidade;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class CidadeView {
 
@@ -39,7 +41,21 @@ public class CidadeView {
     }
 
 
-    public void listarCidades (){}
+    public void listarCidades (){
+        List<Cidade> cidade = controller.listar();
+        System.out.println("Numero| Nome | Estado | Data de Fundacao");
+        for(int index = 0; index < cidade.size(); index++){
+            System.out.println(index+1);
+            exibirCidade(cidade.get(index));
+        }
+
+    }
+
+    private void exibirCidade(Cidade cidade) {
+        System.out.println(cidade.getNome());
+        System.out.println(cidade.getEstado());
+        System.out.println(cidade.getDataDeFundacao());
+    }
 
     public void atualizarCidade(){}
 
